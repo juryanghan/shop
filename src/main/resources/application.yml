@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: local
+
+server:
+  port: 8080
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+
+---
+spring:
+  profiles: local
+  datasource:
+    username: root
+    password: tck1966!!
+    url: jdbc:mysql://115.68.228.63:3306/test?serverTimezone=Asia/Seoul&useUnicode=true&useSSL=true&MultiQueries=true
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: com.kicc.common.config.CustomMySqlDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show-sql: true
+    open-in-view: false
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+
+jwt:
+  secret: secret
+
+logging.level:
+  org.hibernate.SQL: DEBUG
+  org.hibernate.type: INFO
+  org.springframework: INFO
+  org.apache.coyote: INFO
+  mybatis.sql: DEBUG
